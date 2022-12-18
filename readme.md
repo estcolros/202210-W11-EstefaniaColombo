@@ -40,3 +40,12 @@ If the data is incorrect, an error message should be displayed.
 
 If they are correct, you should be shown a screen with all the data entered in the form (it would be like a fourth step).
 Collapse
+
+## Netlify
+
+**Deploy:**
+
+## SonarCloud
+
+**Overview:** https://sonarcloud.io/summary/overall?id=estcolros_202210-W11-EstefaniaColombo
+
