@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+![banner-week10](https://vegibit.com/wp-content/uploads/2019/03/A-Simple-Reactjs-Form-Example.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Challenge week 11
 
-## Available Scripts
+## React & TypeScript form
 
-In the project directory, you can run:
+Create with React a three-step form.
 
-### `npm start`
+-   In each step there will be a group of fields, and only one step should be visible at a time.
+-   Put in each step a button to navigate to the next and a button to navigate to the previous one (in the first step the previous button should not be visible).
+-   In the third step there should be an "Access" button.
+-   In each step, the button to continue to the next step should be disabled until all the fields of the step are filled in.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Step 1: Personal data.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+-   Name
+-   Last name
+-   BirthDate (when the user enters the date, the user's age in years should appear next to this field)
+-   Gender (male/female/other/prefer not to mention) --> Radio button
+-   Email address
+-   Would you like to receive information from our newsletter? --> Checkbox
 
-### `npm test`
+### Step 1: Access data.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   Username
+-   Password
+-   Repeat password
+-   Account type (personal/pro/business) --> It has to be a select
 
-### `npm run build`
+### Step 3: Confirmation.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   The user should see all the data entered and confirm that it is correct. Button to confirm.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Step 4: Login.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    - Username
+    - Password
 
-### `npm run eject`
+If the data is incorrect, an error message should be displayed.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+If they are correct, you should be shown a screen with all the data entered in the form (it would be like a fourth step).
+Collapse
