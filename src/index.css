@@ -1,6 +1,6 @@
 :root {
-    --primary-color: bisque;
-    --secondary-color: brown;
+    --primary-color: rgb(170, 239, 247);
+    --secondary-color: rgb(42, 97, 165);
     --light-gray: rgb(216, 216, 216);
     --header-height: 10vh;
     --footer-height: 3vh;

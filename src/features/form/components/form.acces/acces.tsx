@@ -1,9 +1,13 @@
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { Access, FormAccessType } from '../../models/form.access';
 export function FormAccess({
     handleAdd,
+    handleNext,
+    handlePrevious,
 }: {
-    handleAdd: (access: FormAccessType) => void;
+    handleAdd: (access: Partial<FormAccessType>) => void;
+    handleNext: () => void;
+    handlePrevious: () => void;
 }) {
     const initialFormData: Partial<FormAccessType> = {
         userName: '',
@@ -13,6 +17,14 @@ export function FormAccess({
     };
 
     const [formData, setFormData] = useState(initialFormData);
+    const handleInput = (ev: SyntheticEvent) => {
+        console.log('Input');
+        const element = ev.target as HTMLFormElement;
+        setFormData({
+            ...formData,
+            [element.name]: element.value,
+        });
+    };
 
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
@@ -25,15 +37,16 @@ export function FormAccess({
             )
         );
         setFormData(initialFormData);
+        handleNext();
     };
-    const handleForm = (ev: SyntheticEvent) => {
-        const element = ev.target as HTMLFormElement;
-        setFormData({
-            ...formData,
-            [element.name]:
-                element.type === 'checkbox' ? element.checked : element.value,
-        });
+
+    const handleLast = () => {
+        handlePrevious();
     };
+
+    useEffect(() => {
+        console.log(formData);
+    }, [formData]);
 
     return (
         <section>
@@ -46,7 +59,8 @@ export function FormAccess({
                         name="userName"
                         id="userName"
                         placeholder="Enter your username"
-                        //value={formData.userName}
+                        value={formData.userName}
+                        onInput={handleInput}
                         required
                     />
                 </div>
@@ -57,29 +71,39 @@ export function FormAccess({
                         name="password"
                         id="password"
                         placeholder="Enter your password"
-                        //value={formData.password}
+                        value={formData.password}
+                        onInput={handleInput}
                         required
                     />
                 </div>
                 <div>
-                    <label htmlFor="birthDate">Repeat password </label>
+                    <label htmlFor="repeatPassword">Repeat password </label>
                     <input
                         type="password"
-                        name="repeat-password"
-                        id="repeat-password"
+                        name="repeatPassword"
+                        id="repeatPassword"
                         placeholder="Repeat your password"
-                        //value={formData.repeatPassword}
+                        value={formData.repeatPassword}
+                        onInput={handleInput}
                         required
                     />
                 </div>
-                <select name="accountType" onChange={handleForm}>
+                <label htmlFor="accountType">Type of account </label>
+                <select
+                    name="accountType"
+                    id="accountType"
+                    value={formData.accountType}
+                    onChange={handleInput}
+                >
                     <option value="personal">Personal</option>
                     <option value="pro">Pro</option>
                     <option value="business">Business</option>
                 </select>
                 <div>
-                    <button>Previous</button>
-                    <button>Continue</button>
+                    <button type="button" onClick={handleLast}>
+                        Previous
+                    </button>
+                    <button type="submit">Continue</button>
                 </div>
             </form>
         </section>

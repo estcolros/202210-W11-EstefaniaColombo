@@ -1,9 +1,11 @@
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { FormPersonalType, Personal } from '../../models/form.personal';
 export function FormPersonal({
     handleAdd,
+    handleNext,
 }: {
-    handleAdd: (personal: FormPersonalType) => void;
+    handleAdd: (personal: Partial<FormPersonalType>) => void;
+    handleNext: () => void;
 }) {
     const initialFormData: Partial<FormPersonalType> = {
         name: '',
@@ -15,6 +17,16 @@ export function FormPersonal({
     };
 
     const [formData, setFormData] = useState(initialFormData);
+    const handleInput = (ev: SyntheticEvent) => {
+        console.log('Input');
+        const element = ev.target as HTMLFormElement;
+        setFormData({ ...formData, [element.name]: element.value });
+    };
+
+    const handleChange = () => {
+        console.log('Change');
+        setFormData({ ...formData, newsLetter: !formData.newsLetter });
+    };
 
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
@@ -24,11 +36,17 @@ export function FormPersonal({
                 formData.lastName as string,
                 formData.birthDate as string,
                 formData.gender as string,
-                formData.email as string
+                formData.email as string,
+                formData.newsLetter as boolean
             )
         );
         setFormData(initialFormData);
+        handleNext();
     };
+
+    useEffect(() => {
+        console.log(formData);
+    }, [formData]);
 
     return (
         <section>
@@ -41,7 +59,8 @@ export function FormPersonal({
                         name="name"
                         id="name"
                         placeholder="Enter your name"
-                        // value={formData.name}
+                        value={formData.name}
+                        onInput={handleInput}
                         required
                     />
                 </div>
@@ -52,7 +71,8 @@ export function FormPersonal({
                         name="lastName"
                         id="lastName"
                         placeholder="Enter your last name"
-                        // value={formData.lastName}
+                        value={formData.lastName}
+                        onInput={handleInput}
                         required
                     />
                 </div>
@@ -63,9 +83,11 @@ export function FormPersonal({
                         name="birthDate"
                         id="birthDate"
                         placeholder="Enter your birthdate"
-                        // value={formData.birthDate}
+                        value={formData.birthDate}
+                        onInput={handleInput}
                         required
                     />
+                    {/* Calcular edad  */}
                     <label> Age(counter):</label>
                 </div>
                 <div>
@@ -74,7 +96,9 @@ export function FormPersonal({
                         type="radio"
                         name="gender"
                         id="gMale"
-                        // value={formData.gender}
+                        value="Male"
+                        checked={formData.gender === 'Male'}
+                        onChange={handleInput}
                         required
                     />
                     Male
@@ -82,7 +106,9 @@ export function FormPersonal({
                         type="radio"
                         name="gender"
                         id="gFemale"
-                        // value={formData.gender}
+                        value="Female"
+                        checked={formData.gender === 'Female'}
+                        onChange={handleInput}
                         required
                     />
                     Female
@@ -91,7 +117,9 @@ export function FormPersonal({
                         name="gender"
                         id="gOther"
                         placeholder="Select your gender"
-                        // value={formData.gender}
+                        value="Other"
+                        checked={formData.gender === 'Other'}
+                        onChange={handleInput}
                         required
                     />
                     Other
@@ -100,7 +128,9 @@ export function FormPersonal({
                         name="gender"
                         id="gNotMention"
                         placeholder="Select your gender"
-                        // value={formData.gender}
+                        value="Prefer not to mention"
+                        checked={formData.gender === 'Prefer not to mention'}
+                        onChange={handleInput}
                         required
                     />
                     Prefer not to mention
@@ -112,7 +142,8 @@ export function FormPersonal({
                         name="email"
                         id="email"
                         placeholder="Enter your email"
-                        // value={formData.email}
+                        value={formData.email}
+                        onInput={handleInput}
                         required
                     />
                 </div>
@@ -125,12 +156,13 @@ export function FormPersonal({
                         type="checkbox"
                         name="newsLetter"
                         id="newsLetter"
-                        // checked={formData.newsLetter}
+                        defaultChecked={formData.newsLetter}
+                        onInput={handleChange}
                         required
                     />
                 </div>
                 <div>
-                    <button>Continue</button>
+                    <button type="submit"> Continue ➡️</button>
                 </div>
             </form>
         </section>

@@ -8,13 +8,13 @@ export type FormPersonalType = {
 };
 
 export class Personal implements FormPersonalType {
-    newsLetter: boolean;
     constructor(
         public name: string,
         public lastName: string,
         public birthDate: string,
         public gender: string,
-        public email: string
+        public email: string,
+        public newsLetter: boolean
     ) {
         this.newsLetter = false;
     }
