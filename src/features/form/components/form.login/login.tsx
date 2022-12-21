@@ -1,7 +1,7 @@
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { FormLoginType } from '../../models/form.login';
-export function FormLogin() {
-    const initialFormData: FormLoginType = {
+export function FormLogin({ handlePrevious }: { handlePrevious: () => void }) {
+    const initialFormData: Partial<FormLoginType> = {
         userName: '',
         password: '',
     };
@@ -18,6 +18,12 @@ export function FormLogin() {
 
     const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
+
+        setFormData(initialFormData);
+    };
+
+    const handleLast = () => {
+        handlePrevious();
     };
 
     useEffect(() => {
@@ -54,6 +60,9 @@ export function FormLogin() {
                 </div>
 
                 <div>
+                    <button type="button" onClick={handleLast}>
+                        Previous
+                    </button>
                     <button onClick={handleSubmit} type="submit">
                         Login
                     </button>

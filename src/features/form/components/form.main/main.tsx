@@ -82,7 +82,9 @@ export function FormMain() {
                 ></FormConfirm>
             )}
             {/* Formulario login + results  */}
-            {/* {counter === 3 && <FormLogin></FormLogin>} */}
+            {counter === 3 && (
+                <FormLogin handlePrevious={handlePrevious}></FormLogin>
+            )}
         </>
     );
 }

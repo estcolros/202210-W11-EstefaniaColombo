@@ -88,7 +88,7 @@ export function FormPersonal({
                         required
                     />
                     {/* Calcular edad  */}
-                    <label> Age(counter):</label>
+                    <label> Age(counter): </label>
                 </div>
                 <div>
                     <label htmlFor="gender">Gender </label>
@@ -158,7 +158,6 @@ export function FormPersonal({
                         id="newsLetter"
                         defaultChecked={formData.newsLetter}
                         onInput={handleChange}
-                        required
                     />
                 </div>
                 <div>

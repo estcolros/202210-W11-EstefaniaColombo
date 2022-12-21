@@ -82,6 +82,7 @@ export function FormAccess({
                         type="password"
                         name="repeatPassword"
                         id="repeatPassword"
+                        minLength={6}
                         placeholder="Repeat your password"
                         value={formData.repeatPassword}
                         onInput={handleInput}

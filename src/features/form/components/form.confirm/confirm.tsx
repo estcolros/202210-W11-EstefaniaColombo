@@ -19,54 +19,23 @@ export function FormConfirm({
         <section>
             <h3>Data confirmation </h3>
             <form className="form-confirm">
-                <div>
-                    <label htmlFor="name">Name: {formDataPersonal.name}</label>
-                </div>
-                <div>
-                    <label htmlFor="lasName">
-                        Last Name: {formDataPersonal.lastName}
-                    </label>
-                </div>
-                <div>
-                    <label htmlFor="birthDate">
-                        Birth Date: {formDataPersonal.birthDate}
-                    </label>
-                </div>
-                <div>
-                    <label htmlFor="gender">
-                        Gender: {formDataPersonal.gender}
-                    </label>
-                </div>
-                <div>
-                    <label htmlFor="email">
-                        Email: {formDataPersonal.email}
-                    </label>
-                </div>
-                <div>
-                    <label htmlFor="userName">
-                        Username: {formDataAccess.userName}
-                    </label>
-                </div>
-                <div>
-                    <label htmlFor="password">
-                        Password: {formDataAccess.password}
-                    </label>
-                </div>
-                <div>
-                    <label htmlFor="repeatPassword">
-                        Repeat password: {formDataAccess.repeatPassword}
-                    </label>
-                </div>
-                <div>
-                    <label htmlFor="accountType">
-                        Type of account: {formDataAccess.accountType}
-                    </label>
-                </div>
+                <li>Name: {formDataPersonal.name}</li>
+                <li>Last Name: {formDataPersonal.lastName}</li>
+                <li>Birth Date: {formDataPersonal.birthDate}</li>
+                <li>Gender: {formDataPersonal.gender}</li>
+                <li>Email: {formDataPersonal.email}</li>
+                <li>Newsletter: {formDataPersonal.newsLetter}</li>
+                <li>Username: {formDataAccess.userName}</li>
+                <li>Password: {formDataAccess.password}</li>
+                <li>Repeat password: {formDataAccess.repeatPassword}</li>
+                <li>Type of account: {formDataAccess.accountType}</li>
                 <div>
                     <button type="button" onClick={handleLast}>
                         Previous
                     </button>
-                    <button type="submit">Confirm</button>
+                    <button type="submit" onClick={handleNext}>
+                        Confirm
+                    </button>
                 </div>
             </form>
         </section>

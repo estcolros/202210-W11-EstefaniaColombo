@@ -80,3 +80,7 @@ li.item-task {
 li.item-task .button {
     cursor: pointer;
 }
+
+form.form-confirm li {
+    list-style: none;
+}
